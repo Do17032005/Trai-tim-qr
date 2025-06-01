@@ -1,5 +1,5 @@
-// Tạo mã QR
-const qrContent = "https://youtu.be/yourvideo"; // Nội dung QR code (URL hoặc text)
+// Tạo mã QR với link GitHub Pages
+const qrContent = "https://do17032005.github.io/Trai-tim-qr"; // Link GitHub Pages
 QRCode.toCanvas(document.getElementById("qrcode"), qrContent, {
   width: 200, // Kích thước QR code
   color: {
