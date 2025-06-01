@@ -37,7 +37,7 @@ function createText() {
   const text = messages[Math.floor(Math.random() * messages.length)];
   const x = Math.random() * canvas.width;
   const y = canvas.height + Math.random() * 50; // Giảm khoảng cách xuất phát
-  const speed = 1.5 + Math.random() * 1; // Giảm tốc độ để chữ gần nhau hơn
+  const speed = 3.5 + Math.random() * 1; // Giảm tốc độ để chữ gần nhau hơn
   const fontSize = 20 + Math.random() * 20;
   const opacity = 0.5 + Math.random() * 0.5;
   const color = `rgba(255, ${Math.floor(Math.random() * 200)}, 255, ${opacity})`;
@@ -97,9 +97,11 @@ function init3D() {
 
   // Thêm điều khiển xoay, thu phóng
   controls = new THREE.OrbitControls(camera, renderer.domElement);
-  controls.enableDamping = true;
-  controls.dampingFactor = 0.05;
-  controls.enableZoom = true;
+  controls.enableDamping = true; // Hiệu ứng mượt khi xoay
+  controls.dampingFactor = 0.05; // Độ mượt
+  controls.enableZoom = true; // Cho phép thu phóng
+  controls.minDistance = 10; // Khoảng cách tối thiểu
+  controls.maxDistance = 200; // Khoảng cách tối đa
 
   // Tạo chữ 3D
   create3DText();
@@ -144,12 +146,12 @@ function create3DText() {
         (Math.random() - 0.5) * 100
       );
 
-      // Thêm chuyển động
+      // Thêm chuyển động với tốc độ nhanh hơn
       textMesh.userData = {
         velocity: new THREE.Vector3(
-          (Math.random() - 0.5) * 0.2,
-          (Math.random() - 0.5) * 0.2,
-          (Math.random() - 0.5) * 0.2
+          (Math.random() - 0.5) * 2.0,
+          (Math.random() - 0.5) * 2.0,
+          (Math.random() - 0.5) * 2.0
         )
       };
 
@@ -185,9 +187,9 @@ function animate3D() {
   });
 
   // Giới hạn số lượng chữ trong không gian
-  if (texts.length > 30) { // Giới hạn tối đa 30 chữ
-    const textToRemove = texts.shift(); // Xóa chữ cũ nhất
-    scene.remove(textToRemove); // Xóa khỏi scene
+  if (texts.length > 30) {
+    const textToRemove = texts.shift();
+    scene.remove(textToRemove);
   }
 
   controls.update();
