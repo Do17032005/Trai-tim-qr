@@ -1,6 +1,6 @@
 body {
   margin: 0;
-  background: black;
+  background: rgb(0, 0, 0);
   color: white;
   overflow: hidden;
   font-family: 'Arial', sans-serif;
@@ -26,4 +26,11 @@ canvas#floating-text {
   top: 0;
   left: 0;
   z-index: 1;
+}
+
+h1, p {
+  text-shadow: 0 0 10px #ff00ff, 0 0 20px #ff00ff, 0 0 30px #ff00ff;
+  color: white;
+  font-size: 2rem;
+  font-weight: bold;
 }
