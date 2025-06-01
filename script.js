@@ -132,9 +132,9 @@ function create3DText() {
       });
 
       const textMaterial = new THREE.MeshStandardMaterial({
-        color: new THREE.Color(`hsl(${Math.random() * 360}, 100%, 75%)`),
-        emissive: new THREE.Color(`hsl(${Math.random() * 360}, 100%, 50%)`),
-        emissiveIntensity: 0.5
+        color: new THREE.Color(`hsl(${Math.random() * 360}, 300%, 300%)`), // Màu chính của chữ
+        emissive: new THREE.Color(`hsl(${Math.random() * 360}, 300%, 250%)`), // Màu phát sáng
+        emissiveIntensity: 5.0 // Tăng cường độ sáng
       });
 
       const textMesh = new THREE.Mesh(textGeometry, textMaterial);
@@ -161,12 +161,12 @@ function create3DText() {
   });
 
   // Thêm ánh sáng
-  const light = new THREE.PointLight(0xffffff, 1, 100);
-  light.position.set(10, 10, 10);
-  scene.add(light);
-
-  const ambientLight = new THREE.AmbientLight(0x404040, 1.5); // Ánh sáng môi trường
+  const ambientLight = new THREE.AmbientLight(0xffffff, 3.0); // Tăng cường độ sáng môi trường
   scene.add(ambientLight);
+
+  const pointLight = new THREE.PointLight(0xffffff, 5.0, 300); // Thêm ánh sáng điểm mạnh hơn
+  pointLight.position.set(50, 50, 50);
+  scene.add(pointLight);
 }
 
 function animate3D() {
